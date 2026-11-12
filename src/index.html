@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Dashboard — Clamor</title>
+<meta name="description" content="Current weather, hourly forecast and a 5-day outlook for any city. Free Open-Meteo data, no API key, offline sample fallback.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-weather="sunny">
+<header class="topbar">
+  <div class="brand"><span class="logo" aria-hidden="true">☀️</span><div><h1>Weather Dashboard</h1><p>Current · Hourly · 5-day outlook</p></div></div>
+  <div class="search-wrap">
+    <input id="cityInput" type="text" placeholder="Search a city — e.g. Noida, Delhi, London…" autocomplete="off" aria-label="Search a city">
+    <ul id="suggestions" class="suggestions" hidden></ul>
+    <button id="searchBtn" type="button">Search</button>
+    <button id="locateBtn" type="button" class="ghost" title="Use my location">📍 My location</button>
+  </div>
+</header>
+<main>
+  <p id="status" class="status" role="status">Loading weather for Noida…</p>
+  <section class="current card" id="currentCard" aria-live="polite">
+    <div class="current-main">
+      <h2 id="cityName">Noida</h2>
+      <p id="condition" class="condition">—</p>
+      <p class="big-temp"><span id="temp">--</span>°C</p>
+      <p class="feels">Feels like <strong id="feelsLike">--°C</strong> &nbsp;·&nbsp; <span id="feelsNote"></span></p>
+    </div>
+    <div class="stats">
+      <div class="stat"><span>💧 Humidity</span><strong id="humidity">--%</strong></div>
+      <div class="stat"><span>💨 Wind</span><strong id="wind">-- km/h</strong></div>
+      <div class="stat"><span>🌧️ Precipitation</span><strong id="precip">-- mm</strong></div>
+      <div class="stat"><span>☁️ Cloud cover</span><strong id="cloud">--%</strong></div>
+      <div class="stat"><span>🧭 Wind direction</span><strong id="windDir">--°</strong></div>
+      <div class="stat"><span>🕐 Updated</span><strong id="updated">—</strong></div>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Feels-like vs actual <span class="hint">— next 24 hours</span></h2>
+    <canvas id="hourlyChart" width="900" height="260" aria-label="Hourly temperature chart"></canvas>
+    <div class="legend"><span><i class="dot actual"></i> Actual</span><span><i class="dot feels"></i> Feels like</span><span><i class="dot rain"></i> Precipitation (mm)</span></div>
+    <div id="hourlyStrip" class="hourly-strip"></div>
+  </section>
+  <section class="card">
+    <h2>5-day forecast</h2>
+    <canvas id="dailyChart" width="900" height="240" aria-label="Five day forecast chart"></canvas>
+    <div id="dailyGrid" class="daily-grid"></div>
+  </section>
+  <section class="card">
+    <h2>Recent searches</h2>
+    <div id="recent" class="chips"></div>
+    <p class="muted">Your last search is cached offline — reopen this page without internet and the last successful forecast still loads.</p>
+  </section>
+</main>
+<footer><p>Data: Open-Meteo (free, no key) · Built by Clamor · Sample data is used automatically when the network is unavailable.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>

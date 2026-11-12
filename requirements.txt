@@ -1,0 +1,3 @@
+# Weather Dashboard — pure HTML/CSS/JavaScript, no Python dependencies.
+# No build step and no API key. Open the app with: open src/index.html
+# (or serve it: python3 -m http.server --directory src 8000)
